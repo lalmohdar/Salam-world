@@ -1,0 +1,79 @@
+//
+//  AppDelegate.swift
+//  tips
+//
+//  Created by Latifa Mae Al-Mohdar on 12/31/15.
+//  Copyright © 2015 Latifa Mae Al-Mohdar. All rights reserved.
+//
+
+import UIKit
+
+@UIApplicationMain internal class AppDelegate : UIResponder, UIApplicationDelegate {
+
+    internal var window: UIWindow?
+
+    internal func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool
+
+    internal func applicationWillResignActive(application: UIApplication)
+
+    internal func applicationDidEnterBackground(application: UIApplication)
+
+    internal func applicationWillEnterForeground(application: UIApplication)
+
+    internal func applicationDidBecomeActive(application: UIApplication)
+
+    internal func applicationWillTerminate(application: UIApplication)
+}
+//
+//  ViewController.swift
+//  tips
+//
+//  Created by Latifa Mae Al-Mohdar on 12/31/15.
+//  Copyright © 2015 Latifa Mae Al-Mohdar. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController
+    {
+    @IBOutlet weak var tipControl: UISegmentedControl!
+
+    @IBOutlet weak var billField:
+        UITextField!
+    @IBOutlet weak var tipLabel:
+        UILabel!
+    @IBOutlet weak var totalLabel:
+        UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        tipLabel.text = "$0.00"
+        totalLabel.text = "$0.00"
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func onEditingChanged
+        (sender: AnyObject) {
+            var tipPercentages = [0.18, 0.2, 0.22]
+            var tipPercentage = tipPercentages [tipControl.selectedSegmentIndex]
+        
+            var billAmount = NSString(string: billField.text!).doubleValue
+            var tip = billAmount * tipPercentage
+            var total = billAmount + tip
+           
+            
+            tipLabel.text = String(format: "$%.2f", tip)
+            totalLabel.text = String(format: "$%.2f", total)
+    }
+
+    @IBAction func onTap(sender: AnyObject) {
+        
+        view.endEditing(true)
+    }
+}
+
